@@ -77,3 +77,32 @@ print((guitar as ElectronicGuitar).toneLevel)
 if let toneLevel = (guitar as? ElectronicGuitar)?.toneLevel {
     print(toneLevel)
 }
+
+
+/*------------------Protocol----------------- */
+//define a set of requirements (methods, properties) for a particular piece of functionality.
+
+protocol RandomNumberGenerator {
+    static var name: String {get}
+    
+    init(name: String)
+    func random() -> Double
+}
+
+class MyRandomNumberGenerator : RandomNumberGenerator {
+    static var name: String = "MyGenerator"
+    
+    required init(name: String) {
+        
+    }
+    
+    func random() -> Double {
+        return 0.1
+    }
+}
+
+class AnotherNumberGenerator : MyRandomNumberGenerator {
+    required init(name: String) {
+        super.init(name: name)
+    }
+}
