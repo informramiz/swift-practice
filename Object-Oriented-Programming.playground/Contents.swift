@@ -93,7 +93,7 @@ class MyRandomNumberGenerator : RandomNumberGenerator {
     static var name: String = "MyGenerator"
     
     required init(name: String) {
-        
+        MyRandomNumberGenerator.name = name
     }
     
     func random() -> Double {
@@ -106,3 +106,19 @@ class AnotherNumberGenerator : MyRandomNumberGenerator {
         super.init(name: name)
     }
 }
+
+/***********************Extensions********************/
+//extend the functionality of an existing class
+extension MyRandomNumberGenerator : Equatable {
+    static func == (lhs: MyRandomNumberGenerator, rhs: MyRandomNumberGenerator) -> Bool {
+        return lhs.random() == rhs.random()
+    }
+    
+    func printName() {
+        print(MyRandomNumberGenerator.name)
+    }
+}
+
+let numberGenerator = MyRandomNumberGenerator(name: "MyGenerator")
+numberGenerator.random()
+numberGenerator.printName()
