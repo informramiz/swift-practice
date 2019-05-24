@@ -105,7 +105,7 @@ func frequence(numbers: [Int]) -> [Int: Int] {
     for number in numbers {
         var numberFrequency = frequenceDictionary[number] ?? 0
         numberFrequency += 1
-        frequenceDictionary.updateValue(numberFrequency, forKey: number)
+        frequenceDictionary[number] = numberFrequency
     }
 
     

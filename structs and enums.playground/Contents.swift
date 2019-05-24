@@ -74,3 +74,11 @@ case .pinky:
 //enum initialization with raw value
 let pinkyFinger = Finger(rawValue: 5)
 
+//associated values
+enum ImageFilter {
+    case sepia
+    case horizontalGradient(from: UIColor, to: UIColor)
+}
+
+let gradient = ImageFilter.horizontalGradient(from: UIColor.blue, to: UIColor.green)
+print(ImageFilter.sepia)
