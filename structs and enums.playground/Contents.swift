@@ -80,5 +80,58 @@ enum ImageFilter {
     case horizontalGradient(from: UIColor, to: UIColor)
 }
 
-let gradient = ImageFilter.horizontalGradient(from: UIColor.blue, to: UIColor.green)
 print(ImageFilter.sepia)
+let filter = ImageFilter.horizontalGradient(from: UIColor.blue, to: UIColor.green)
+
+//simple switch case
+switch filter {
+case .sepia: print("sepia")
+case .horizontalGradient:
+    print("horizontal gradient")
+}
+
+//now switch case to extract associated values
+switch filter {
+case .sepia:
+    print("sepia")
+case .horizontalGradient(let from, let to):
+    print("from: \(from)")
+}
+
+//another way
+switch filter {
+case .sepia:
+    print("sepia")
+case let .horizontalGradient(from, to):
+    print("from: \(from)")
+}
+
+//another way, if you want to extract associated values as variables
+switch filter {
+case .sepia:
+    print("sepia")
+case var .horizontalGradient(from, to):
+    print("from: \(from)")
+    from = UIColor.yellow
+}
+
+//another way to add check based on associated values
+//another way
+switch filter {
+case .sepia:
+    print("sepia")
+case let .horizontalGradient(from, to) where from == UIColor.blue:
+    print("horizontal gradient has blue color")
+default:
+    print("Uknown filter")
+}
+
+//another way using if case let, useful when you just are interested in a single case
+if case let ImageFilter.horizontalGradient(from, to) = filter {
+    print(to)
+}
+
+//extended if check on a single associated value of of many
+if case let ImageFilter.horizontalGradient(from, to) = filter, from == UIColor.blue {
+    print(to)
+}
