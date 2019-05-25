@@ -89,3 +89,15 @@ func testGuardShort(isPlayerReady: Bool, playerAge: Int) {
 }
 
 testGuardShort(isPlayerReady: true, playerAge: 18)
+
+//unwrapping options with guard
+func unwrapOptional(optional: Int?) {
+    guard let optionalUnwrapped = optional else {
+        print("Unable to wrap optional")
+        return
+    }
+    
+    print("Optional unwrapped with value: \(optionalUnwrapped)")
+}
+
+unwrapOptional(optional: 2)
