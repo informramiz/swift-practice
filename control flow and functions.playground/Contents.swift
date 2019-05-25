@@ -58,3 +58,19 @@ func minus(_ a: Int = 2, _ b: Int = 3) -> Int {
 }
 let diff = minus(5, 1) 
 print("diff = \(diff)")
+
+//guard statements
+
+func testGuard(isPlayerReady: Bool, playerAge: Int) {
+    guard isPlayerReady else {
+        print("Player is not ready")
+        return
+    }
+    guard playerAge >= 18 else {
+        print("Player age is less than 18")
+        return
+    }
+    print("Player is ready")
+}
+
+testGuard(isPlayerReady: true, playerAge: 18)
