@@ -59,7 +59,9 @@ func minus(_ a: Int = 2, _ b: Int = 3) -> Int {
 let diff = minus(5, 1) 
 print("diff = \(diff)")
 
-//guard statements
+
+
+//--------------------guard statements------------------------//
 
 func testGuard(isPlayerReady: Bool, playerAge: Int) {
     guard isPlayerReady else {
@@ -74,3 +76,16 @@ func testGuard(isPlayerReady: Bool, playerAge: Int) {
 }
 
 testGuard(isPlayerReady: true, playerAge: 18)
+
+
+//add composite conditions to guard statement
+
+func testGuardShort(isPlayerReady: Bool, playerAge: Int) {
+    guard isPlayerReady, playerAge >= 18 else {
+        print("Player is not ready")
+        return
+    }
+    print("Player is ready")
+}
+
+testGuardShort(isPlayerReady: true, playerAge: 18)
