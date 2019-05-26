@@ -47,3 +47,29 @@ func tryTryWithOptional() {
 }
 
 tryTryWithOptional()
+
+//-----------------------Custom Errors------------------
+enum TakeOffError: Error {
+    case planeNotWorking
+    case lowOnFuel
+    case runwayShort(minRunLengthRequired: Int)
+}
+
+func takeOff() throws -> Bool {
+    throw TakeOffError.runwayShort(minRunLengthRequired: 150)
+}
+
+do {
+    try takeOff()
+} catch let error as TakeOffError {
+    switch error {
+    case let .runwayShort(minRunLengthRequired):
+        print("Current runway is too short, min runway length is: \(minRunLengthRequired)")
+    case .lowOnFuel:
+        print("Plan is low on fuel")
+    default:
+        print("Plan not working")
+    }
+} catch {
+    print(error)
+}
