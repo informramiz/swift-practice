@@ -56,6 +56,11 @@ enum TakeOffError: Error {
 }
 
 func takeOff() throws -> Bool {
+    //will execute before this function ends but after all code inside this function is executed
+    //it will execute even in case of error so use to clean up resources
+    defer {
+        print("Defer executing: Plan is being taken off the runway")
+    }
     throw TakeOffError.runwayShort(minRunLengthRequired: 150)
 }
 
