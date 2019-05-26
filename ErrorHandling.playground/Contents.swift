@@ -34,3 +34,16 @@ do {
 } catch {
     print(error)
 }
+
+//try with optional return
+func tryTryWithOptional() {
+    let fileUrl = Bundle.main.bundleURL
+    let content = try? String(contentsOf: fileUrl, encoding: .utf8)
+    if let content = content {
+        print(content)
+    } else {
+        print("file reading failed")
+    }
+}
+
+tryTryWithOptional()
