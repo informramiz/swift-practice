@@ -57,3 +57,22 @@ let dolphinZoo = ZooExhibit<Dolphin>(animals: [Dolphin(name: "cutie pye"), Dolph
 dolphinZoo.tourExhibit()
 
 
+//----------class based extension and generics----------
+protocol Feedable {
+    static let favoriteFood: String
+}
+
+extension Dolphin: Feedable {
+    static var favoriteFood = "fish"
+}
+
+extension ZooExhibit where AnimalType: Feedable {
+    func feedAnimals() {
+        for animal in animals {
+            print("You feed \(animal.name) some \(animal.favoriteFood)")
+        }
+    }
+}
+
+dolphinZoo.feedAnimals()
+
