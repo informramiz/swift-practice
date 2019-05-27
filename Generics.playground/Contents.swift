@@ -76,3 +76,24 @@ extension ZooExhibit where AnimalType: Feedable {
 
 dolphinZoo.feedAnimals()
 
+//generic sub-classing
+class ZoomExhibitClass<AnimalType: Animal> {
+    let animals: [AnimalType]
+    
+    init(animals: AnimalType) {
+        self.animals = animals
+    }
+    
+    func tourExhibit() {
+        print("Welcome to \(AnimalType.commonName) exhibit")
+        for animal in animals {
+            print("Say hello  to \(animal.name)")
+        }
+    }
+}
+
+class TravelingExhibit<AnimalType: Animal>: ZoomExhibitClass<AnimalType> {
+    override func tourExhibit() {
+        print("Can't exhibit today, I am travelling!!! :p")
+    }
+}
