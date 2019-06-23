@@ -43,3 +43,35 @@ let autoClosure = {
     let b = 2
     a + b
 }
+
+
+enum CompassDirection: CaseIterable {
+    case north, south, east, west
+}
+
+let closure = {(value: CompassDirection) in "\(value)"}
+let result = CompassDirection.allCases.map(closure).joined(separator: ",")
+print("Built-in map result: \(result)")
+
+//I am writing my own implementation of the "map" method. I am going to use extensions as this is how the original
+//map function is written as well.
+extension Array {
+    /**
+     Goes through each element of array and transforms it to some type T according to the transform closure provided as input
+     Input: Takes input a closure named transform that takes input the element of the array and transforms it to some type T
+    */
+    func myMap<T>(_ transform: (Element) -> T) -> [T] {
+        //create a new array to hold the transformed array
+        var transformedArray = [T]()
+        //go through each element of array
+        for a in self {
+            //call the transform closure the transform element "a" into a value of type "T"
+            transformedArray.append(transform(a))
+        }
+        return transformedArray
+    }
+}
+
+//here I am going to use "myMap" extension function
+let myMapResult = CompassDirection.allCases.myMap(closure).joined(separator: ",")
+print("My map result: \(myMapResult)")
