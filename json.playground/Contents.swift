@@ -27,3 +27,33 @@ do {
 } catch {
     print(error)
 }
+
+
+/*----------Arrays--------------*/
+var jsonArrayStr = """
+[
+    {
+        "title": "Groundhog Day",
+        "released": 1993,
+        "starring": ["Bill Murray", "Andie MacDowell", "Chris Elliot"]
+    },
+    {
+        "title": "Home Alone",
+        "released": 1990,
+        "starring": ["Macaulay Culkin", "Joe Pesci", "Daniel Stern", "John Heard", "Catherine O'Hara"]
+    }
+]
+""".data(using: .utf8)!
+
+struct Movie: Codable {
+    let title: String
+    let released: Int
+    let starring: [String]
+}
+
+do {
+    let movies = try jsonDecoder.decode([Movie].self, from: jsonArrayStr)
+    print(movies)
+} catch {
+    print(error)
+}
