@@ -57,3 +57,34 @@ do {
 } catch {
     print(error)
 }
+
+
+/*----------Nested Objects--------------*/
+var jsonNested = """
+{
+    "name": "Neha",
+    "studentId": 326156,
+    "academics": {
+        "field": "iOS",
+        "grade": "A"
+    }
+}
+""".data(using: .utf8)!
+
+struct Student: Codable {
+    let name: String
+    let studentId: Int
+    let academics: Academics
+}
+
+struct Academics: Codable {
+    let field: String
+    let grade: String
+}
+
+do {
+    let nestedObjects = try jsonDecoder.decode(Student.self, from: jsonNested)
+    print(nestedObjects)
+} catch {
+    print(error)
+}
