@@ -12,3 +12,21 @@ lowPriorityGlobalQueue.async {
 highPriorityGlobalQueue.async {
     print("tick")
 }
+
+
+//custom queues
+let q1 = DispatchQueue(label: "queue1")
+let q2 = DispatchQueue(label: "queue2")
+let q3 = DispatchQueue(label: "queue3")
+
+q1.async {
+    print(1)
+}
+
+q2.async {
+    print(2)
+}
+
+q3.async {
+    print(3)
+}
