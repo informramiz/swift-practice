@@ -88,3 +88,54 @@ do {
 } catch {
     print(error)
 }
+
+
+
+//Flicker API for photos
+import Foundation
+import PlaygroundSupport
+
+PlaygroundPage.current.needsIndefiniteExecution = true
+let flickerPhotos = """
+"photos":{
+"page":1,
+"pages":1,
+"perpage":250,
+"total":"36",
+"photo":[
+{
+"id":"47964765217",
+"owner":"54915149@N06",
+"secret":"d06af9f186",
+"server":"65535",
+"farm":66,
+"title":"Boerhavia elegans",
+"ispublic":1,
+"isfriend":0,
+"isfamily":0,
+"url_m":"https://live.staticflickr.com/65535/47964765217_d06af9f186.jpg",
+"height_m":"333",
+"width_m":"500"
+},
+{
+"id":"47964764862",
+"owner":"54915149@N06",
+"secret":"aeef31765d",
+"server":"65535",
+"farm":66,
+"title":"Boerhavia elegans",
+"ispublic":1,
+"isfriend":0,
+"isfamily":0,
+"url_m":"https://live.staticflickr.com/65535/47964764862_aeef31765d.jpg",
+"height_m":"333",
+"width_m":"500"
+}
+]
+}
+}
+""".data(using: .utf8)
+
+struct FlickerPhotos {
+    
+}
